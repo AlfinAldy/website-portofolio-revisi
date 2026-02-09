@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+/* custom pointer */
+/* .navbar-menu-link {
+    cursor: url('../assets/hand-cursor.png') 10 0, pointer;
+}
+
+.cv-download {
+    cursor: url('../assets/rocket-cursor.png') 10 0, pointer;
+}
+
+.certificate-image {
+    cursor: url('../assets/plane-cursor.png') 10 0, pointer;
+} */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+:root {
+    /* font */
+    --font-primary: 'Nunito Sans', arial;
+    --font-logo: 'Audiowide', arial;
+
+    /* color */
+    --primary-color: #F5F5F0;
+    --secondary-color: #E6D8C3;
+    --font-color: #5D866C;
+    --element-color: #C2A68C;
+
+    /* image size */
+}
+
+.navbar-global {
+    background: var(--primary-color);
+    color: var(--font-color);
+    box-shadow: 0 2px 8px rgba(93,134,108,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.navbar {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+/* logo */
+.logo-navbar { display: flex; align-items: center; }
+.logo-text {
+    font-family: var(--font-logo);
+    color: var(--font-color);
+    font-size: 1.25rem;
+    letter-spacing: 0.6px;
+    padding: 0.35rem 0.6rem;
+    border-radius: 8px;
+    background: linear-gradient(90deg, transparent 0%, rgba(194,166,140,0.07) 100%);
+}
+
+/* menu */
+.navbar-menu-ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.navbar-menu-link {
+    text-decoration: none;
+    font-family: var(--font-primary);
+    color: var(--font-color);
+    padding: 0.45rem 0.75rem;
+    border-radius: 8px;
+    transition: background 200ms ease, color 200ms ease, transform 120ms ease;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+.navbar-menu-link:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.navbar-menu-link.active {
+    background: var(--element-color);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* responsive: stack on small screens */
+@media (max-width: 720px) {
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+    .navbar-menu-ul {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .logo-text { font-size: 1.05rem; }
+}
+
+/* ===== Hamburger Menu ===== */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+    z-index: 100;
+}
+
+.hamburger-line {
+    width: 28px;
+    height: 3px;
+    background: var(--font-color);
+    border-radius: 2px;
+    transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ===== Mobile Menu ===== */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .navbar-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--primary-color);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 8px 16px rgba(93, 134, 108, 0.08);
+        z-index: 99;
+    }
+
+    .navbar-menu.active {
+        max-height: 500px;
+        animation: slideMenuDown 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .navbar-menu-ul {
+        flex-direction: column;
+        gap: 0 !important;
+        width: 100%;
+        padding: 1.5rem 0;
+        justify-content: flex-start;
+    }
+
+    .navbar-menu-li {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(93, 134, 108, 0.08);
+        animation: fadeInUp 0.4s ease-out backwards;
+    }
+
+    .navbar-menu-li:nth-child(1) { animation-delay: 0.05s; }
+    .navbar-menu-li:nth-child(2) { animation-delay: 0.1s; }
+    .navbar-menu-li:nth-child(3) { animation-delay: 0.15s; }
+    .navbar-menu-li:nth-child(4) { animation-delay: 0.2s; }
+    .navbar-menu-li:nth-child(5) { animation-delay: 0.25s; }
+    .navbar-menu-li:nth-child(6) { animation-delay: 0.3s; }
+
+    .navbar-menu-link {
+        display: block;
+        padding: 1rem 1.5rem !important;
+        background: transparent !important;
+        transition: all 300ms ease;
+    }
+
+    .navbar-menu-link:hover {
+        background: var(--secondary-color) !important;
+        padding-left: 2rem !important;
+        transform: none;
+    }
+
+    .navbar-menu-link.active {
+        background: var(--element-color) !important;
+        color: #fff;
+    }
+}
+
+/* Hamburger Animation Active State */
+@media (max-width: 768px) {
+    .hamburger-menu.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger-menu.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+    }
+}
+
+@keyframes slideMenuDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
