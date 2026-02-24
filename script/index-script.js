@@ -467,32 +467,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Character counter for textarea
-    messageInput.addEventListener('input', function() {
-        const maxLength = 500;
-        const currentLength = this.value.length;
-
-        // Jika belum ada counter, buat
-        let counter = this.nextElementSibling;
-        if (!counter || !counter.classList.contains('char-counter')) {
-            counter = document.createElement('div');
-            counter.className = 'char-counter';
-            counter.style.fontSize = '0.85rem';
-            counter.style.color = 'rgba(93, 134, 108, 0.6)';
-            counter.style.marginTop = '0.3rem';
-            counter.style.textAlign = 'right';
-            this.parentNode.appendChild(counter);
-        }
-
-        counter.textContent = `${currentLength}/${maxLength} karakter`;
-
-        // Change color jika mendekati limit
-        if (currentLength > maxLength * 0.8) {
-            counter.style.color = 'var(--element-color)';
-        } else {
-            counter.style.color = 'rgba(93, 134, 108, 0.6)';
-        }
-    });
 
     // Form submission with animation
     submitBtn.addEventListener('click', function(e) {
